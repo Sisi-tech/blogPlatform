@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Platform</title>
+</head>
+<body>
+    <h1>Blog PlatForm</h1>
+    <p id="message"></p>
+    <div id="login-register" style="display: none;">
+        <button type="button" id="login">Login</button>
+        <button type="button" id="register">Register</button>
+    </div>
+    <!-- login -->
+    <div id="login-div" style="display: none;">
+        <form>
+            <div>
+                <label for="email">Email:</label>
+                <input type="email" id="email" />
+            </div>
+            <div>
+                <label for="password">Password:</label>
+                <input type="password" id="password" />
+            </div>
+            <button type="button" id="login-button">Login</button>
+            <button type="button" id="login-cancel">Cancel</button>
+        </form>
+    </div>
+    <!-- register -->
+    <div id="register-div" style="display: none;">
+        <form>
+            <div>
+                <label for="name">Name:</label>
+                <input type="text" id="name" />
+            </div>
+            <div>
+                <label for="email">Email:</label>
+                <input type="email" id="email" />
+            </div>
+            <div>
+                <label for="password">Password:</label>
+                <input type="password" id="password" />
+            </div>
+            <div>
+                <label for="password2">Verify password:</label>
+                <input type="password" id="password2" />
+            </div>
+            <button type="button" id="register-button">Register</button>
+            <button type="button" id="register-cancel">Cancel</button>
+        </form>
+    </div>
+    <!-- post -->
+    <div id="post" style="display: none;">
+        <p id="post-message"></p>
+        <table id="post-table">
+            <tr id="post-table-header">
+                <th>Picture</th>
+                <th>Title</th>
+                <th>Content</th>
+                <th colspan="2"></th>
+            </tr>
+        </table>
+        <button type="submit" id="add-post">Add post</button>
+        <button type="submit" id="logoff">Log Off</button>
+    </div>
+    <!-- Edit post -->
+    <div id="edit-post" style="display: none;">
+        <form>
+            <div>
+                <label for="picture">Picture:</label>
+                <input type="url" id="picture" name="picture" />
+            </div>
+            <div>
+                <label for="title">Title:</label>
+                <input type="text" id="title" name="title" required />
+            </div>
+            <div>
+                <label for="content">Content:</label>
+                <textarea type="text" id="content" rows="5" required></textarea>
+            </div>
+            <button type="submit" id="add-post">Add</button>
+            <button type="submit" id="edit-cancel">Cancel</button>
+        </form>
+    </div>
+    <script src="./index.js" type="module"></script>
+</body>
+</html>

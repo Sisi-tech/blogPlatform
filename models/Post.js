@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 
 const PostSchema = new mongoose.Schema({
     picture: {
-        type: Image,
+        type: String,
         required: [false],
     },
     title: {
@@ -12,7 +12,7 @@ const PostSchema = new mongoose.Schema({
     },
     content: {
         type: String,
-        require: [true, 'Please provide content'],
+        required: [true, 'Please provide content'],
         maxlength: 1000,
     },
     createdBy: {
@@ -20,6 +20,6 @@ const PostSchema = new mongoose.Schema({
         ref: 'User',
         required: [true, 'Please provide user']
     }
-}, {timestamps: true})
+}, {timestamps: true});
 
 module.exports = mongoose.model('Post', PostSchema);

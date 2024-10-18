@@ -33,7 +33,7 @@ export const handleRegister = () => {
 
     registerButton.addEventListener("click", async () => {
         if (inputEnabled) {
-            if (password.value != password2.value) {
+            if (password.value !== password_two.value) {
                 message.textContent = "The passwords entered do not match.";
             } else {
                 enableInput(false);
@@ -49,17 +49,29 @@ export const handleRegister = () => {
                             password: password.value,
                         }),
                     });
-                    const data = await response.json();
-                    if (response.status === 201) {
-                        message.textContent = `Registration successful. Welcome ${data.user.name}`;
-                        setToken(data.token);
-                        resetForm();
-                        showPosts();
+    
+                    const responseText = await response.text();
+                    console.log("Response text:", responseText);
+    
+                    if (response.ok) {
+                        // Only attempt to parse JSON if the response is OK (2xx)
+                        try {
+                            const data = JSON.parse(responseText);
+                            message.textContent = `Registration successful. Welcome ${data.user.name}`;
+                            setToken(data.token);
+                            resetForm();
+                            showPosts();
+                        } catch (err) {
+                            console.error("Error parsing JSON:", err);
+                            message.textContent = "An unexpected error occurred.";
+                        }
                     } else {
-                        message.textContent = data.msg;
+                        // Handle 4xx/5xx errors or unexpected responses
+                        message.textContent = `Error: ${response.status} - ${response.statusText}`;
+                        console.error("Error response from server:", responseText);
                     }
                 } catch (err) {
-                    console.error(err);
+                    console.error("Error during fetch:", err);
                     message.textContent = "A communications error occurred.";
                 }
                 enableInput(true);
@@ -67,6 +79,7 @@ export const handleRegister = () => {
         }
     });
 
+    
     registerCancel.addEventListener("click", () => {
         resetForm();
         showLoginRegister();

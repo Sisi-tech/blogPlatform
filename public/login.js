@@ -15,13 +15,13 @@ let password = null;
 
 export const handleLogin = () => {
     loginDiv = document.getElementById("login-div");
-    email = document.getElementById("email");
-    password = document.getElementById("password");
+    email = document.getElementById("email_one");
+    password = document.getElementById("password_one");
     const loginButton = document.getElementById("login-button");
     const loginCancel = document.getElementById("login-cancel");
 
     loginDiv.addEventListener("click", async (e) => {
-        if (inputEnabled && e.target.nodeName === "BUTTON") {
+        if (inputEnabled) {
             if (e.target === loginButton) {
                 enableInput(false);
                 try {
@@ -41,7 +41,7 @@ export const handleLogin = () => {
                         setToken(data.token);
                         email.value = "";
                         password.value = "";
-                        showJobs();
+                        showPosts();
                     } else {
                         message.textContent = data.msg;
                     }

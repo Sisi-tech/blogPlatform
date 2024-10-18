@@ -1,4 +1,5 @@
 let activeDiv = null;
+
 export const setDiv = (newDiv) => {
     if (newDiv != activeDiv) {
         if (activeDiv) {
@@ -33,11 +34,19 @@ import { handleRegister } from "./register.js";
 document.addEventListener("DOMContentLoaded", () => {
     token = localStorage.getItem("token");
     message = document.getElementById("message");
-    handleLoginRegister()
+    const loginDiv = document.getElementById("login-register");
+    loginDiv.style.display = "block";
+    const postDiv = document.getElementById("post");
+    const addEditDiv = document.getElementById("edit-post")
+    postDiv.style.display = "block";
+    addEditDiv.style.display = "block";
+
+    handleLoginRegister();
     handleLogin();
     handlePosts();
     handleRegister();
     handleAddEdit();
+
     if (token) {
         showPosts();
     } else {

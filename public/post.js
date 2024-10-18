@@ -1,16 +1,17 @@
+
 import {
     inputEnabled,
     setDiv,
     message,
     setToken,
-    enableInput,
+    enableInput, 
+    token,
 } from "./index.js";
-import { showLoginRegister } from "./loginRegister.js";
-import { showAddEdit } from "./addEdit.js";
 
-let postDiv = null;
-let postTable = null;
-let postTableHeader = null;
+
+export let postDiv = null;
+export let postTable = null;
+export let postTableHeader = null;
 
 export const handlePosts = () => {
     postDiv = document.getElementById("post");
@@ -29,7 +30,7 @@ export const handlePosts = () => {
                 postTable.replaceChildren([postTableHeader]);
                 showLoginRegister();
             } else if (e.target.classList.contains("editButton")) {
-                message.textContent = "",
+                message.textContent = "";
                 showAddEdit(e.target.dataset.id);
             }
         }
@@ -46,33 +47,38 @@ export const showPosts = async () => {
                 Authorization: `Bearer ${token}`,
             },
         });
+        
+        // Check if the response is OK (status code 200)
+        if (!response.ok) {
+            const errorText = await response.text(); // Read response as text
+            throw new Error(`HTTP error! status: ${response.status}, response: ${errorText}`);
+        }
+        
         const data = await response.json();
         let children = [postTableHeader];
-        if (response.status === 200) {
-            if (data.count === 0) {
-                postTable.replaceChildren(...children);
-            } else {
-                for (let i = 0; i < data.post.length; i++) {
-                    let rowEntry = document.createElement("tr");
-                    let editButton = `<td><button type="button" class="editButton" data-id=${data.post[i]._id}>Edit</button></td>`;
-                    let deleteButton = `<td><button type="button" class="deleteButton: data-id=${data.post[i]._id}>Delete</button></td>`;
-                    let rowHTML = `
-                        <td>${data.post[i].picture}</td>
-                        <td>${data.post[i].title}</td>
-                        <td>${data.post[i].content}</td>
-                        <td>${editButton}${deleteButton}</td>`;
-                    rowEntry.innerHTML = rowHTML;
-                    children.push(rowEntry);
-                }
-                postTable.replaceChildren(...children);
-            }
+        if (data.count === 0) {
+            postTable.replaceChildren(...children);
         } else {
-            message.textContent = data.msg;
+            for (let i = 0; i < data.post.length; i++) {
+                let rowEntry = document.createElement("tr");
+                let editButton = `<td><button type="button" class="editButton" data-id=${data.post[i]._id}>Edit</button></td>`;
+                let deleteButton = `<td><button type="button" class="deleteButton" data-id=${data.post[i]._id}>Delete</button></td>`;
+                let rowHTML = `
+                    <td>${data.post[i].picture}</td>
+                    <td>${data.post[i].title}</td>
+                    <td>${data.post[i].content}</td>
+                    <td>${editButton}${deleteButton}</td>`;
+                rowEntry.innerHTML = rowHTML;
+                children.push(rowEntry);
+            }
+            postTable.replaceChildren(...children);
         }
     } catch (err) {
         console.log(err);
         message.textContent = "A communication error occurred.";
+    } finally {
+        enableInput(true);
+        setDiv(postDiv);
     }
-    enableInput(true);
-    setDiv(postDiv);
 };
+

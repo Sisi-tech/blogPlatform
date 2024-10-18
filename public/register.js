@@ -11,70 +11,72 @@ import { showPosts } from "./post.js";
 
 let registerDiv = null;
 let name = null;
-let email1 = null;
+let email = null;
 let password = null;
-let password2 = null;
+let password_two = null;
 
 export const handleRegister = () => {
     registerDiv = document.getElementById("register-div");
     name = document.getElementById("name");
-    email1 = document.getElementById("email");
+    email = document.getElementById("email_two");
     password = document.getElementById("password");
-    password2 = document.getElementById("password2");
+    password_two = document.getElementById("password_two");
     const registerButton = document.getElementById("register-button");
     const registerCancel = document.getElementById("register-cancel");
 
-    registerDiv.addEventListener("click", async (e) => {
-        if (inputEnabled && e.target.nodeName === "BUTTON") {
-            if (e.target === registerButton) {
-                if (password.value != password2.value) {
-                    message.textContent = "The passwords entered do not match.";
-                } else {
-                    enableInput(false);
-                    try {
-                        const response = await fetch("/api/v1/user/register", {
-                            method: "POST",
-                            header: {
-                                "Content-Type": "application/json",
-                            },
-                            body: JSON.stringify({
-                                name: name.value, 
-                                email: email1.value,
-                                password: password.value,
-                            }),
-                        });
-                        const data = await response.json();
-                        if (response.status === 201) {
-                            message.textContent = `Registration successful. Welcome ${data.user.name}`;
-                            setToken(data.token);
-                            name.value = "";
-                            email1.value = "";
-                            password.value = "";
-                            password2.value = "";
-                            showPosts();
-                        } else {
-                            message.textContent = data.msg;
-                        }
-                    } catch (err) {
-                        console.error(err);
-                        message.textContent = "A communications error occurred.";
+    const resetForm = () => {
+        name.value = "";
+        email.value = "";
+        password.value = "";
+        password_two.value = "";
+    };
+
+    registerButton.addEventListener("click", async () => {
+        if (inputEnabled) {
+            if (password.value != password2.value) {
+                message.textContent = "The passwords entered do not match.";
+            } else {
+                enableInput(false);
+                try {
+                    const response = await fetch("/api/v1/user/register", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
+                        body: JSON.stringify({
+                            name: name.value,
+                            email: email.value,
+                            password: password.value,
+                        }),
+                    });
+                    const data = await response.json();
+                    if (response.status === 201) {
+                        message.textContent = `Registration successful. Welcome ${data.user.name}`;
+                        setToken(data.token);
+                        resetForm();
+                        showPosts();
+                    } else {
+                        message.textContent = data.msg;
                     }
-                    enableInput(true);
+                } catch (err) {
+                    console.error(err);
+                    message.textContent = "A communications error occurred.";
                 }
-            } else if (e.target === registerCancel) {
-                name.value = "";
-                email1.value = "";
-                password.value = "";
-                password2.value = "";
-                showLoginRegister();
+                enableInput(true);
             }
         }
     });
+
+    registerCancel.addEventListener("click", () => {
+        resetForm();
+        showLoginRegister();
+    })
 };
 
 export const showRegister = () => {
-    email1.value = null;
+    name.value = null;
+    email.value = null;
     password.value = null;
-    password2.value = null;
+    password_two.value = null;
     setDiv(registerDiv);
 };

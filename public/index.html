@@ -7,28 +7,28 @@
     <title>Blog Platform</title>
 </head>
 <body>
-    <h1>Blog PlatForm</h1>
+    <h1>Blog Platform 🙃</h1>
     <p id="message"></p>
     <div id="login-register" style="display: none;">
         <button type="button" id="login">Login</button>
         <button type="button" id="register">Register</button>
     </div>
-    <!-- login -->
+    <!-- Login -->
     <div id="login-div" style="display: none;">
         <form>
             <div>
-                <label for="email">Email:</label>
-                <input type="email" id="email" />
+                <label for="email_one">Email:</label>
+                <input type="email" id="email_one" />
             </div>
             <div>
-                <label for="password">Password:</label>
-                <input type="password" id="password" />
+                <label for="password_one">Password:</label>
+                <input type="password" id="password_one" />
             </div>
             <button type="button" id="login-button">Login</button>
             <button type="button" id="login-cancel">Cancel</button>
         </form>
     </div>
-    <!-- register -->
+    <!-- Register -->
     <div id="register-div" style="display: none;">
         <form>
             <div>
@@ -36,22 +36,22 @@
                 <input type="text" id="name" />
             </div>
             <div>
-                <label for="email">Email:</label>
-                <input type="email" id="email" />
+                <label for="email_two">Email:</label>
+                <input type="email" id="email_two" />
             </div>
             <div>
                 <label for="password">Password:</label>
                 <input type="password" id="password" />
             </div>
             <div>
-                <label for="password2">Verify password:</label>
-                <input type="password" id="password2" />
+                <label for="password_two">Verify password:</label>
+                <input type="password" id="password_two" />
             </div>
             <button type="button" id="register-button">Register</button>
             <button type="button" id="register-cancel">Cancel</button>
         </form>
     </div>
-    <!-- post -->
+    <!-- Post Section -->
     <div id="post" style="display: none;">
         <p id="post-message"></p>
         <table id="post-table">
@@ -62,26 +62,26 @@
                 <th colspan="2"></th>
             </tr>
         </table>
-        <button type="submit" id="add-post">Add post</button>
-        <button type="submit" id="logoff">Log Off</button>
+        <button type="button" id="add-post">Add post</button>
+        <button type="button" id="logoff">Log Off</button>
     </div>
-    <!-- Edit post -->
+    <!-- Edit Post -->
     <div id="edit-post" style="display: none;">
         <form>
             <div>
                 <label for="picture">Picture:</label>
-                <input type="url" id="picture" name="picture" />
+                <input type="url" id="edit-picture" name="picture" />
             </div>
             <div>
                 <label for="title">Title:</label>
-                <input type="text" id="title" name="title" required />
+                <input type="text" id="edit-title" name="title" required />
             </div>
             <div>
                 <label for="content">Content:</label>
-                <textarea type="text" id="content" rows="5" required></textarea>
+                <textarea id="edit-content" rows="5" required></textarea>
             </div>
-            <button type="submit" id="add-post">Add</button>
-            <button type="submit" id="edit-cancel">Cancel</button>
+            <button type="button" id="edit-add-post">Add</button>
+            <button type="button" id="edit-cancel">Cancel</button>
         </form>
     </div>
     <script src="./index.js" type="module"></script>

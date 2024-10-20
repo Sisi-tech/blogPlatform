@@ -15,7 +15,7 @@
         <button type="button" id="register">Register</button>
     </div>
     <!-- Login -->
-    <div id="login-div" style="display: none;">
+    <div id="login-div" class="login-container" style="display: none;" >
         <form>
             <div>
                 <label for="email-one">Email:</label>
@@ -30,7 +30,7 @@
         </form>
     </div>
     <!-- Register -->
-    <div id="register-div" style="display: none;">
+    <div id="register-div" class="register-container" style="display: none;">
         <form>
             <div>
                 <label for="name">Name:</label>
@@ -53,28 +53,22 @@
         </form>
     </div>
     <!-- Post Section -->
-    <div id="post" style="display: none;">
+    <div id="post" class="post-container" style="display: none;">
         <p id="post-message"></p>
-        <table id="post-table">
-            <tr id="post-table-header">
-                <th>Title</th>
-                <th>Content</th>
-                <th colspan="2"></th>
-            </tr>
-        </table>
+        <div id="posts-container"></div>
         <button type="button" id="add-post">Add post</button>
         <button type="button" id="logoff">Log Off</button>
     </div>
     <!-- Edit Post -->
-    <div id="edit-post" style="display: none;">
-        <form>
-            <div>
+    <div id="edit-post" class="edit-post-container" style="display: none;">
+        <form class="post-fields">
+            <div class="title-div">
                 <label for="title">Title:</label>
-                <input type="text" id="edit-title" name="title" required />
+                <input class="title-field" type="text" id="edit-title" name="title" required />
             </div>
-            <div>
+            <div class="content-div">
                 <label for="content">Content:</label>
-                <textarea id="edit-content" rows="5" required></textarea>
+                <textarea class="content-field" id="edit-content" rows="10" required></textarea>
             </div>
             <button type="button" id="edit-add-post">Add</button>
             <button type="button" id="edit-cancel">Cancel</button>

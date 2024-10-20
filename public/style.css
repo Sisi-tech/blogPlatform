@@ -1,9 +1,93 @@
+* {
+    top: 0;
+    left: 0;
+}
 body {
+    width: 100%;
     display: flex; 
     flex-direction: column; 
-    justify-content: center; 
-    text-align: center; 
+    justify-content: center;
     align-items: center;
+    text-align: center;
     background-color: rgb(251, 236, 249);
 }
+.login-container,
+.register-container,
+.post-container,
+.edit-post-container {
+    margin-bottom: 20px;
+    width: 100%;
+    max-width: 1000px;
+}
+.post-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
 
+.posts-container {
+    width: 100%;
+    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    margin: 0 auto;
+}
+
+.single-post {
+    background-color: white;
+    width: 70%;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    font-size: 20px;
+}
+
+.editButton,
+.deleteButton {
+    background-color: rgb(216, 211, 216);
+    border: none;
+    padding: 6px 12px 6px 12px;
+    border-radius: 16px;
+    font-size: 16px;
+}
+.editButton {
+    padding-left: 18px;
+    padding-right: 18px;
+}
+.editButton:hover {
+    background-color: rgb(154, 148, 153);
+}
+.deleteButton:hover {
+    background-color: rgb(154, 148, 153);
+}
+
+.post-fields {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    gap: 30px;
+    font-size: 20px;
+}
+.title-div,
+.content-div {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 4px;
+    margin: 4px;
+}
+.title-field,
+.content-field {
+    padding: 8px;
+}
+#edit-add-post,
+#edit-cancel {
+    padding: 4px 0 4px 0;
+    margin: 4px;
+    font-size: 18px;
+}

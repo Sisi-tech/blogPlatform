@@ -11,15 +11,13 @@ import { showAddEdit } from './addEdit.js';  // Import showAddEdit function
 import { showLoginRegister } from './loginRegister.js';  // Import showLoginRegister function
 
 export let postDiv = null;
-export let postTable = null;
-export let postTableHeader = null;
+export let postContainer = null;
 
 export const handlePosts = () => {
     postDiv = document.getElementById("post");
+    postContainer = document.getElementById("posts-container");
     const logoff = document.getElementById("logoff");
     const addPost = document.getElementById("add-post");
-    postTable = document.getElementById("post-table");
-    postTableHeader = document.getElementById("post-table-header");
 
     postDiv.addEventListener("click", (e) => {
         if (inputEnabled && e.target.nodeName === "BUTTON") {
@@ -28,7 +26,6 @@ export const handlePosts = () => {
             } else if (e.target === logoff) {
                 setToken(null);
                 message.textContent = "You have been logged off.";
-                postTable.replaceChildren([postTableHeader]);
                 showLoginRegister();  // This function should now be recognized
             } else if (e.target.classList.contains("editButton")) {
                 message.textContent = "";
@@ -57,22 +54,25 @@ export const showPosts = async () => {
         }
         
         const data = await response.json();
-        let children = [postTableHeader];
+        postContainer.innerHTML = '';
         if (!Array.isArray(data.posts) || data.posts.length === 0) {
-            postTable.replaceChildren(...children);
+            postContainer.innerHTML = '<p>No posts available.</p>';
         } else {
-            for (let i = 0; i < data.posts.length; i++) {
-                let rowEntry = document.createElement("tr");
-                let editButton = `<td><button type="button" class="editButton" data-id=${data.posts[i]._id}>Edit</button></td>`;
-                let deleteButton = `<td><button type="button" class="deleteButton" data-id=${data.posts[i]._id}>Delete</button></td>`;
-                let rowHTML = `
-                    <td>${data.posts[i].title}</td>
-                    <td>${data.posts[i].content}</td>
-                    <td>${editButton}${deleteButton}</td>`;
-                rowEntry.innerHTML = rowHTML;
-                children.push(rowEntry);
-            }
-            postTable.replaceChildren(...children);
+            data.posts.forEach(post => {
+                const postDiv = document.createElement("div");
+                postDiv.classList.add("post-entry");
+                postDiv.innerHTML = `
+                    <div class="single-post">
+                        <h3>${post.title}</h3>
+                        <p>${post.content}</p>
+                        <div>
+                            <button type="button" class="editButton" data-id="${post._id}">Edit</button>
+                            <button type="button" class="deleteButton" data-id="${post._id}">Delete</button>
+                        </div>
+                    </div>
+                `;
+                postContainer.appendChild(postDiv);
+            })
         }
     } catch (err) {
         console.log(err);

@@ -2,7 +2,6 @@ import { enableInput, inputEnabled, message, setDiv, token } from "./index.js";
 import { showPosts } from "./post.js";
 
 let addEditDiv = null;
-let picture = null;
 let title = null;
 let content = null;
 let addingPost = null;

@@ -5,9 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blog Platform</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Blog Platform 🙃</h1>
+    <h1>Unleash Your Thoughts</h1>
     <p id="message"></p>
     <div id="login-register" style="display: none;">
         <button type="button" id="login">Login</button>
@@ -17,12 +18,12 @@
     <div id="login-div" style="display: none;">
         <form>
             <div>
-                <label for="email_one">Email:</label>
-                <input type="email" id="email_one" />
+                <label for="email-one">Email:</label>
+                <input type="email" id="email-one" />
             </div>
             <div>
-                <label for="password_one">Password:</label>
-                <input type="password" id="password_one" />
+                <label for="password-one">Password:</label>
+                <input type="password" id="password-one" />
             </div>
             <button type="button" id="login-button">Login</button>
             <button type="button" id="login-cancel">Cancel</button>
@@ -56,7 +57,6 @@
         <p id="post-message"></p>
         <table id="post-table">
             <tr id="post-table-header">
-                <th>Picture</th>
                 <th>Title</th>
                 <th>Content</th>
                 <th colspan="2"></th>
@@ -68,10 +68,6 @@
     <!-- Edit Post -->
     <div id="edit-post" style="display: none;">
         <form>
-            <div>
-                <label for="picture">Picture:</label>
-                <input type="url" id="edit-picture" name="picture" />
-            </div>
             <div>
                 <label for="title">Title:</label>
                 <input type="text" id="edit-title" name="title" required />

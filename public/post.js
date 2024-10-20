@@ -1,4 +1,3 @@
-
 import {
     inputEnabled,
     setDiv,
@@ -8,6 +7,8 @@ import {
     token,
 } from "./index.js";
 
+import { showAddEdit } from './addEdit.js';  // Import showAddEdit function
+import { showLoginRegister } from './loginRegister.js';  // Import showLoginRegister function
 
 export let postDiv = null;
 export let postTable = null;
@@ -23,19 +24,20 @@ export const handlePosts = () => {
     postDiv.addEventListener("click", (e) => {
         if (inputEnabled && e.target.nodeName === "BUTTON") {
             if (e.target === addPost) {
-                showAddEdit(null);
+                showAddEdit(null);  // This function should now be recognized
             } else if (e.target === logoff) {
                 setToken(null);
                 message.textContent = "You have been logged off.";
                 postTable.replaceChildren([postTableHeader]);
-                showLoginRegister();
+                showLoginRegister();  // This function should now be recognized
             } else if (e.target.classList.contains("editButton")) {
                 message.textContent = "";
-                showAddEdit(e.target.dataset.id);
+                showAddEdit(e.target.dataset.id);  // This function should now be recognized
             }
         }
     });
 };
+
 
 export const showPosts = async () => {
     try {
@@ -56,17 +58,16 @@ export const showPosts = async () => {
         
         const data = await response.json();
         let children = [postTableHeader];
-        if (data.count === 0) {
+        if (!Array.isArray(data.posts) || data.posts.length === 0) {
             postTable.replaceChildren(...children);
         } else {
-            for (let i = 0; i < data.post.length; i++) {
+            for (let i = 0; i < data.posts.length; i++) {
                 let rowEntry = document.createElement("tr");
-                let editButton = `<td><button type="button" class="editButton" data-id=${data.post[i]._id}>Edit</button></td>`;
-                let deleteButton = `<td><button type="button" class="deleteButton" data-id=${data.post[i]._id}>Delete</button></td>`;
+                let editButton = `<td><button type="button" class="editButton" data-id=${data.posts[i]._id}>Edit</button></td>`;
+                let deleteButton = `<td><button type="button" class="deleteButton" data-id=${data.posts[i]._id}>Delete</button></td>`;
                 let rowHTML = `
-                    <td>${data.post[i].picture}</td>
-                    <td>${data.post[i].title}</td>
-                    <td>${data.post[i].content}</td>
+                    <td>${data.posts[i].title}</td>
+                    <td>${data.posts[i].content}</td>
                     <td>${editButton}${deleteButton}</td>`;
                 rowEntry.innerHTML = rowHTML;
                 children.push(rowEntry);

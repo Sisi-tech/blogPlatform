@@ -9,10 +9,9 @@ let addingPost = null;
 
 export const handleAddEdit = () => {
   addEditDiv = document.getElementById("edit-post");
-  picture = document.getElementById("picture");
-  title = document.getElementById("title");
-  content = document.getElementById("content");
-  addingPost = document.getElementById("adding-post");
+  title = document.getElementById("edit-title");
+  content = document.getElementById("edit-content");
+  addingPost = document.getElementById("edit-add-post");
   const editCancel = document.getElementById("edit-cancel");
 
   addEditDiv.addEventListener("click", async (e) => {
@@ -35,7 +34,6 @@ export const handleAddEdit = () => {
             Authorization: `Bearer ${token}`,
           },
           body: JSON.stringify({
-            picture: picture.value,
             title: title.value,
             content: content.value,
           }),
@@ -43,14 +41,7 @@ export const handleAddEdit = () => {
         
         const data = await response.json();
         if (response.status === 200 || response.status === 201) {
-          if (response.status === 200) {
-            message.textContent = "The post was updated.";
-          } else {
-            message.textContent = "The post was created.";
-          }
-
-          // Clear fields after successful operation
-          picture.value = "";
+          message.textContent = response.status === 200 ? "The post was updated." : "The post was created.";
           title.value = "";
           content.value = "";
           showPosts(); // Refresh the posts list
@@ -63,21 +54,25 @@ export const handleAddEdit = () => {
       }
       enableInput(true);
     }
+
+    if (e.target === editCancel) {
+      title.value = "";
+      content.value = "";
+      addEditDiv.style.display = "none"; // Hide the edit post section
+      message.textContent = ""; // Clear any messages
+    }
   });
 };
 
 export const showAddEdit = async (postId) => {
   if (!postId) {
-    picture.value = "";
     title.value = "";
     content.value = "";
     addingPost.textContent = "add";
     message.textContent = "";
-
     setDiv(addEditDiv);
   } else {
     enableInput(false);
-    
     try {
       const response = await fetch(`/api/v1/post/${postId}`, {
         method: "GET",
@@ -89,13 +84,11 @@ export const showAddEdit = async (postId) => {
 
       const data = await response.json();
       if (response.status === 200) {
-        picture.value = data.post.picture;
         title.value = data.post.title;
         content.value = data.post.content;
         addingPost.textContent = "update";
         message.textContent = "";
         addEditDiv.dataset.id = postId;
-
         setDiv(addEditDiv);
       } else {
         message.textContent = "The post entry was not found.";
@@ -106,8 +99,6 @@ export const showAddEdit = async (postId) => {
       message.textContent = "A communications error has occurred.";
       showPosts(); // Refresh the posts list
     }
-    
     enableInput(true);
   }
 };
-

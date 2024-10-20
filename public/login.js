@@ -15,8 +15,8 @@ let password = null;
 
 export const handleLogin = () => {
     loginDiv = document.getElementById("login-div");
-    email = document.getElementById("email_one");
-    password = document.getElementById("password_one");
+    email = document.getElementById("email-one");
+    password = document.getElementById("password-one");
     const loginButton = document.getElementById("login-button");
     const loginCancel = document.getElementById("login-cancel");
 

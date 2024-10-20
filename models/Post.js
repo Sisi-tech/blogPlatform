@@ -1,10 +1,6 @@
 const mongoose = require('mongoose')
 
 const PostSchema = new mongoose.Schema({
-    picture: {
-        type: String,
-        required: [false],
-    },
     title: {
         type: String,
         required: [true, 'Please enter title'],

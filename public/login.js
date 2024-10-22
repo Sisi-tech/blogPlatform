@@ -20,6 +20,7 @@ export const handleLogin = () => {
     password = document.getElementById("password-one");
     const loginButton = document.getElementById("login-button");
     const loginCancel = document.getElementById("login-cancel");
+    const desc = document.getElementById("desc");
 
     loginDiv.addEventListener("click", async (e) => {
         if (inputEnabled) {
@@ -55,6 +56,7 @@ export const handleLogin = () => {
                 email.value = "";
                 password.value = "";
                 showLoginRegister();
+                desc.style.display = "block";
             }
         }
     });

@@ -23,6 +23,7 @@ export const handleRegister = () => {
     password_two = document.getElementById("password_two");
     const registerButton = document.getElementById("register-button");
     const registerCancel = document.getElementById("register-cancel");
+    const desc = document.getElementById("desc");
 
     const resetForm = () => {
         name.value = "";
@@ -83,6 +84,8 @@ export const handleRegister = () => {
     registerCancel.addEventListener("click", () => {
         resetForm();
         showLoginRegister();
+        desc.style.display = "block";
+
     })
 };
 

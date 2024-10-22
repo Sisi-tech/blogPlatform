@@ -6,6 +6,7 @@ import {
     enableInput,
     setToken,
 } from "./index.js";
+
 import { showLoginRegister } from "./loginRegister.js";
 import { showPosts } from "./post.js";
 

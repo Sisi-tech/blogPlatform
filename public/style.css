@@ -1,15 +1,40 @@
 * {
     top: 0;
-    left: 0;
 }
-body {
+html, body {
     width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
     display: flex; 
+    position: relative;
     flex-direction: column; 
     justify-content: center;
     align-items: center;
     text-align: center;
-    background-color: rgb(251, 236, 249);
+    background-image: url('./img/blueSky.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.login-register {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 20px;
+}
+.desc {
+    text-align: center;
+    font-size: 26px;
+    font-weight: bold;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color:rgb(41, 99, 31);
+}
+.login-btn,
+.register-btn {
+    border: none;
+    background-color: transparent;
+    font-size: 18px;
 }
 .login-container,
 .register-container,
@@ -18,6 +43,8 @@ body {
     margin-bottom: 20px;
     width: 100%;
     max-width: 1000px;
+}
+.login-container {
 }
 .post-container {
     display: flex;

@@ -45,7 +45,51 @@ html, body {
     max-width: 1000px;
 }
 .login-container {
+    width: 30%;
+    padding: 20px;
+    background-color: rgb(232, 243, 246, 0.5);
+    display: flex;
+    text-align: left;
+    font-size: 20px;
 }
+.sign-in-title {
+    text-align: center;
+}
+.login-email-div,
+.login-password-div {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 8px;
+}
+.login-email-div input,
+.login-password-div input {
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+.login-btns {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 10px 0;
+}
+.login-div-login-btn,
+.login-div-cancel-btn {
+    padding: 8px 16px;
+    font-size: 18px;
+    border-radius: 20px;
+    border: none;
+    background-color: #639bc1;
+    color: white;
+    cursor: pointer;
+}
+.login-div-login-btn:hover,
+.login-div-cancel-btn:hover {
+    background-color: #47718d;
+}
+
 .post-container {
     display: flex;
     flex-direction: column;

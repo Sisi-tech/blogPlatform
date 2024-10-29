@@ -67,7 +67,7 @@ export const showPosts = async () => {
                         <p>${post.content}</p>
                         <div>
                             <button type="button" class="editButton" data-id="${post._id}">Edit</button>
-                            <button type="button" class="deleteButton" data-id="${post._id}">Delete</button>
+                            <button type="button" id="deleteButton" class="deleteButton" data-id="${post._id}">Delete</button>
                         </div>
                     </div>
                 `;

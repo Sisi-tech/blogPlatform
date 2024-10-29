@@ -21,7 +21,7 @@ export const handleRegister = () => {
     email = document.getElementById("email_two");
     password = document.getElementById("password");
     password_two = document.getElementById("password_two");
-    const registerButton = document.getElementById("register-button");
+    const registerButton = document.getElementById("register-confirm");
     const registerCancel = document.getElementById("register-cancel");
     const desc = document.getElementById("desc");
 

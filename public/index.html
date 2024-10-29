@@ -9,8 +9,12 @@
 </head>
 <body>
     <div id="login-register" style="display: none;" class="login-register">
-        <button type="button" id="login" class="login-btn">Sign In</button>
-        <button type="button" id="register" class="register-btn">Sign Up</button>
+        <button type="submit" id="login" class="login-btn">
+            <span style='font-size:30px; background-color: white; padding: 4px; border-radius: 20px;'>
+                &#128100;
+            </span>
+        </button>
+        <!-- <button type="submit" id="register" class="register-btn">Sign Up</button> -->
     </div>
     <div class="desc" id="desc">
         <p class="word-one">Start your journey today ... </p>
@@ -23,11 +27,15 @@
             <h3 class="sign-in-title">Sign In</h3>
             <div class="login-email-div">
                 <label for="email-one">Email:</label>
-                <input type="email" id="email-one" />
+                <input type="email" id="email-one" required />
             </div>
             <div class="login-password-div">
                 <label for="password-one">Password:</label>
-                <input type="password" id="password-one" />
+                <input type="password" id="password-one" required />
+            </div>
+            <div class="sign-up-div">
+                <p class="sign-up-here">Don't have an account?</p>
+                <button type="button" id="register" class="sign-up-here-btn">Sign up</button>
             </div>
             <div class="login-btns">
                 <button type="button" id="login-button" class="login-div-login-btn">Login</button>
@@ -38,24 +46,27 @@
     <!-- Register -->
     <div id="register-div" class="register-container" style="display: none;">
         <form>
-            <div>
+            <h3 class="sign-up-title">Sign Up</h3>
+            <div class="register-name-div">
                 <label for="name">Name:</label>
-                <input type="text" id="name" />
+                <input type="text" id="name" required />
             </div>
-            <div>
+            <div class="register-email-div">
                 <label for="email_two">Email:</label>
-                <input type="email" id="email_two" />
+                <input type="email" id="email_two" required />
             </div>
-            <div>
+            <div class="register-password-one">
                 <label for="password">Password:</label>
-                <input type="password" id="password" />
+                <input type="password" id="password" required />
             </div>
-            <div>
+            <div class="register-password-two">
                 <label for="password_two">Verify password:</label>
-                <input type="password" id="password_two" />
+                <input type="password" id="password_two" required />
             </div>
-            <button type="button" id="register-button">Register</button>
-            <button type="button" id="register-cancel">Cancel</button>
+            <div class="register-btns">
+                <button type="button" id="register-confirm" class="register-confirm-btn">Register</button>
+                <button type="button" id="register-cancel" class="register-cancel-btn">Cancel</button>
+            </div>
         </form>
     </div>
     <!-- Post Section -->

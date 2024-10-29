@@ -1,5 +1,5 @@
 * {
-    top: 0;
+    top: auto;
 }
 html, body {
     width: 100%;
@@ -30,8 +30,7 @@ html, body {
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     color:rgb(41, 99, 31);
 }
-.login-btn,
-.register-btn {
+.login-btn {
     border: none;
     background-color: transparent;
     font-size: 18px;
@@ -44,7 +43,8 @@ html, body {
     width: 100%;
     max-width: 1000px;
 }
-.login-container {
+.login-container,
+.register-container {
     width: 30%;
     padding: 20px;
     background-color: rgb(232, 243, 246, 0.5);
@@ -52,31 +52,43 @@ html, body {
     text-align: left;
     font-size: 20px;
 }
-.sign-in-title {
+.sign-in-title,
+.sign-up-title {
     text-align: center;
 }
 .login-email-div,
-.login-password-div {
+.login-password-div,
+.register-name-div,
+.register-email-div,
+.register-password-one,
+.register-password-two {
     display: flex;
     flex-direction: column;
     gap: 6px;
     padding: 8px;
 }
 .login-email-div input,
-.login-password-div input {
+.login-password-div input,
+.register-name-div input,
+.register-email-div input,
+.register-password-one input,
+.register-password-two input {
     padding: 8px;
     font-size: 16px;
     border: 1px solid #ccc;
     border-radius: 4px;
 }
-.login-btns {
+.login-btns,
+.register-btns {
     display: flex;
     justify-content: center;
     gap: 20px;
     padding: 10px 0;
 }
 .login-div-login-btn,
-.login-div-cancel-btn {
+.login-div-cancel-btn,
+.register-confirm-btn,
+.register-cancel-btn {
     padding: 8px 16px;
     font-size: 18px;
     border-radius: 20px;
@@ -86,26 +98,47 @@ html, body {
     cursor: pointer;
 }
 .login-div-login-btn:hover,
-.login-div-cancel-btn:hover {
+.login-div-cancel-btn:hover,
+.register-confirm-btn:hover,
+.register-cancel-btn:hover {
     background-color: #47718d;
+}
+.sing-up-div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+}
+.sign-up-here,
+.sign-up-here-btn {
+    margin: 0;
+}
+.sign-up-here {
+    display: inline-block;
+    padding: 8px 2px 10px 10px;
+}
+.sign-up-here-btn {
+    background-color: transparent;
+    font-size: 16px;
+    border: none;
+    border-radius: 16px;
+    padding: 6px 8px;
+}
+.sign-up-here-btn:hover {
+    background-color: #7f96a5;
 }
 
 .post-container {
     display: flex;
-    flex-direction: column;
     width: 100%;
-    justify-content: center;
-    align-items: center;
 }
 
 .posts-container {
-    width: 100%;
-    max-width: 800px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 30px;
     margin: 0 auto;
 }
 
@@ -172,18 +205,25 @@ html, body {
         font-size: 22px;
         padding: 20px;
     }
-    .login-container {
+    .login-container,
+    .register-container {
         width: 60%;
         font-size: 16px;
         padding: 15px;
     }
     .login-div-cancel-btn,
-    .login-div-login-btn {
+    .login-div-login-btn,
+    .register-confirm-btn,
+    .register-cancel-btn {
         font-size: 15px;
         padding: 6px 8px;
     }
     .login-email-div input,
-    .login-password-div input {
+    .login-password-div input,
+    .register-name-div input,
+    .register-email-div input,
+    .register-password-one input,
+    .register-password-two input {
         padding: 5px;
     }
 }

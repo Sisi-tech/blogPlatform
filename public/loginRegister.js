@@ -9,6 +9,7 @@ export const handleLoginRegister = () => {
     const login = document.getElementById("login");
     const register = document.getElementById("register");
     const desc = document.getElementById("desc");
+    const signUp = document.getElementById("sign-up");
 
     login.addEventListener("click", () => {
         if (inputEnabled) {

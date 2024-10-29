@@ -20,7 +20,7 @@ export const handleAddEdit = () => {
       let method = "POST";
       let url = "/api/v1/post";
       
-      if (addingPost.textContent === "update") {
+      if (addingPost.textContent === "Update") {
         method = "PATCH";
         url = `/api/v1/post/${addEditDiv.dataset.id}`;
       }
@@ -58,8 +58,10 @@ export const handleAddEdit = () => {
       title.value = "";
       content.value = "";
       addEditDiv.style.display = "none"; // Hide the edit post section
+      showPosts();
       message.textContent = ""; // Clear any messages
     }
+
   });
 };
 
@@ -85,7 +87,7 @@ export const showAddEdit = async (postId) => {
       if (response.status === 200) {
         title.value = data.post.title;
         content.value = data.post.content;
-        addingPost.textContent = "update";
+        addingPost.textContent = "Update";
         message.textContent = "";
         addEditDiv.dataset.id = postId;
         setDiv(addEditDiv);

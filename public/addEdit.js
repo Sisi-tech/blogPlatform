@@ -41,11 +41,17 @@ export const handleAddEdit = () => {
         const data = await response.json();
         if (response.status === 200 || response.status === 201) {
           message.textContent = response.status === 200 ? "The post was updated." : "The post was created.";
+          setTimeout(() => {
+            message.textContent = "";
+          }, 2000);
           title.value = "";
           content.value = "";
           showPosts(); // Refresh the posts list
         } else {
           message.textContent = data.msg;
+          setTimeout(() => {
+            message.textContent = "";
+          }, 2000);
         }
       } catch (err) {
         console.log(err);

@@ -40,6 +40,9 @@ export const handleLogin = () => {
                     const data = await response.json();
                     if (response.status === 200) {
                         message.textContent = `Logon successful. Welcome ${data.user.name}`;
+                        setTimeout(() => {
+                            message.textContent = "";
+                        }, 2000);
                         setToken(data.token);
                         email.value = "";
                         password.value = "";

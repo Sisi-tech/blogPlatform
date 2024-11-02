@@ -131,28 +131,46 @@ html, body {
 
 .post-container {
     display: flex;
-    width: 100%;
-}
-
-.posts-container {
-    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    background-color: rgb(255, 255, 255, 0.8);
+    border-radius: 10px;
+}
+
+#posts-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+    max-width: 800px;
+    padding: 20px;
     margin: 0 auto;
 }
 
 .single-post {
-    background-color: white;
-    width: 70%;
-    border-radius: 8px;
-    padding: 20px;
-    margin-bottom: 20px;
-    font-size: 20px;
+    background: rgb(213, 248, 249);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    max-width: 800px;
+    padding: 40px;
+    margin: 20px 0;
+    text-align: center;
+}
+.btns {
+    padding-top: 20px;
 }
 
 .editButton,
-.deleteButton {
+.deleteButton,
+#add-post,
+#logoff {
     background-color: rgb(216, 211, 216);
     border: none;
     padding: 6px 12px 6px 12px;
@@ -167,6 +185,12 @@ html, body {
     background-color: rgb(154, 148, 153);
 }
 .deleteButton:hover {
+    background-color: rgb(154, 148, 153);
+}
+#add-post:hover {
+    background-color: rgb(154, 148, 153);
+}
+#logoff:hover {
     background-color: rgb(154, 148, 153);
 }
 

@@ -26,9 +26,10 @@ export const handlePosts = () => {
                 showAddEdit(null);  // This function should now be recognized
             } else if (e.target === logoff) {
                 setToken(null);
+                message.textContent = "You have been logged off.";
                 setTimeout(() => {
-                    message.textContent = "You have been logged off.";
-                }, 3000);
+                    message.textContent = "";
+                }, 2000);
                 showLoginRegister();  // This function should now be recognized
             } else if (e.target.classList.contains("editButton")) {
                 message.textContent = "";

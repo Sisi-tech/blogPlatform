@@ -59,6 +59,9 @@ export const handleRegister = () => {
                         try {
                             const data = JSON.parse(responseText);
                             message.textContent = `Registration successful. Welcome ${data.user.name}`;
+                            setTimeout(() => {
+                                message.textContent = "";
+                            }, 2000);
                             setToken(data.token);
                             resetForm();
                             showPosts();
